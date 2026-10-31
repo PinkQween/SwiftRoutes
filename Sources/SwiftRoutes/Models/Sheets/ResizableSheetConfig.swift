@@ -9,19 +9,26 @@ import SwiftUI
 
 /// Configuration for a resizable sheet, including its detents and interactions.
 public struct ResizableSheetConfig {
-    var detents: Set<PresentationDetentTransformable>
-    var selection: Binding<PresentationDetentTransformable>?
-    var dragIndicator: Visibility
-    var background: EnvironmentBackgroundOption
-    var cornerRadius: CGFloat?
-    var backgroundInteraction: PresentationBackgroundInteractionBackSupport
-    var contentInteraction: PresentationContentInteractionBackSupport
+    /// The set of available sheet sizes. Include multiple values to let people resize the sheet.
+    public var detents: Set<PresentationDetentTransformable>
+    /// Optional binding for reading and changing the selected sheet size.
+    public var selection: Binding<PresentationDetentTransformable>?
+    /// Visibility of the sheet's drag indicator.
+    public var dragIndicator: Visibility
+    /// Background treatment for the sheet.
+    public var background: EnvironmentBackgroundOption
+    /// Optional sheet corner radius.
+    public var cornerRadius: CGFloat?
+    /// Whether the content behind the sheet can be interacted with.
+    public var backgroundInteraction: PresentationBackgroundInteractionBackSupport
+    /// Whether scrolling content resizes the sheet or scrolls within it.
+    public var contentInteraction: PresentationContentInteractionBackSupport
 
     /// Resizable sheet settings.
     /// - Parameters:
-    ///   - detents: Array of sizes sheet can be.
-    ///   - selection: Programatically set the selection. If nil, user can still swipe between sizes.
-    ///   - dragIndicator: Show notch on top of sheet.
+    ///   - detents: Available sheet sizes. For example, `[.fraction(0.25), .medium, .large]` offers three sizes.
+    ///   - selection: Binding to the selected size. If `nil`, the user can still swipe between sizes.
+    ///   - dragIndicator: Visibility of the drag indicator.
     ///   - background: Background of sheet. (supported on iOS 16.4 only!)
     ///   - cornerRadius: Corner radius of sheet. (supported on iOS 16.4 only!)
     ///   - backgroundInteraction: Background interaction of sheet (supported on iOS 16.4 only!)
