@@ -102,11 +102,18 @@ extension Binding where Value == Bool {
 @MainActor
 extension Binding where Value == PresentationDetent {
     
-    init(selection: Binding<PresentationDetentTransformable>) {
+    init(
+        selection: Binding<PresentationDetentTransformable>,
+        detents: Set<PresentationDetentTransformable>
+    ) {
         self.init {
             selection.wrappedValue.asPresentationDetent
         } set: { newValue in
-            selection.wrappedValue = PresentationDetentTransformable(detent: newValue)
+            // Preserve custom detents by matching against the configured values.
+            // SwiftUI does not expose the original height/fraction when converting
+            // a PresentationDetent back to this package's representation.
+            selection.wrappedValue = detents.first(where: { $0.asPresentationDetent == newValue })
+                ?? PresentationDetentTransformable(detent: newValue)
         }
     }
     

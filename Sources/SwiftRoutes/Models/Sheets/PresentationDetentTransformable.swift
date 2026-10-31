@@ -9,10 +9,15 @@ import SwiftUI
 
 /// A hashable representation of SwiftUI presentation detents.
 public enum PresentationDetentTransformable: Hashable {
+    /// A sheet detent at the medium system-defined height.
     case medium
+    /// A sheet detent at the large system-defined height.
     case large
+    /// A sheet detent with a fixed height, in points.
     case height(CGFloat)
+    /// A sheet detent at a fraction of the available height, from `0.0` to `1.0`.
     case fraction(CGFloat)
+    /// A fallback for a detent that cannot be represented by the supported cases.
     case unknown
     
     init(detent: PresentationDetent) {
