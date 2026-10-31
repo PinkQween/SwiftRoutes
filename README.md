@@ -1,10 +1,12 @@
 ### 🚀 Learn how to build and use this package: https://www.swiftful-thinking.com/offers/REyNLwwH
 
 
-# SwiftfulRouting  🤙
+# SwiftRoutes  🤙
 [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FSwiftfulThinking%2FSwiftfulRouting%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/SwiftfulThinking/SwiftfulRouting) [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FSwiftfulThinking%2FSwiftfulRouting%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/SwiftfulThinking/SwiftfulRouting)
 
 ### Programmatic navigation for SwiftUI applications.
+
+[API documentation](https://pinkqween.github.io/SwiftRoutes/documentation/swiftroutes/)
 - ✅ Segues
 - ✅ Alerts
 - ✅ Modals
@@ -33,7 +35,7 @@
 
 Use a `RouterView` to replace `NavigationStack` in your SwiftUI code.
 
-Before SwiftfulRouting:
+Before SwiftRoutes:
 ```swift
 NavigationStack {
   MyView()
@@ -44,7 +46,7 @@ NavigationStack {
 }
 ```
 
-With SwiftfulRouting:
+With SwiftRoutes:
 ```swift
 RouterView { _ in
   MyView()
@@ -135,7 +137,7 @@ https://github.com/SwiftfulThinking/SwiftfulRouting.git
 Import the package.
 
 ```swift
-import SwiftfulRouting
+import SwiftRoutes
 ```
 
 Add a `RouterView` at the top of your view heirarchy. A `RouterView` will embed your view into a NavigationStack and add modifiers to support all potential segues. This would **replace** an existing `NavigationStack` in your code.
@@ -143,7 +145,7 @@ Add a `RouterView` at the top of your view heirarchy. A `RouterView` will embed 
 Use a `RouterView` to replace `NavigationStack` in your SwiftUI code.
 
 ```swift
-// Before SwiftfulRouting
+// Before SwiftRoutes
 NavigationStack {
   MyView()
     .navigationDestination()
@@ -152,7 +154,7 @@ NavigationStack {
     .alert()
 }
 
-// With SwiftfulRouting
+// With SwiftRoutes
 RouterView { _ in
   MyView()
 }
@@ -417,7 +419,7 @@ router.dismissAllScreens()
 
 **Native Swipe-Back Gesture**
 
-SwiftfulRouting uses UIKit's `UINavigationController` under the hood. By default, the interactive pop gesture recognizer's delegate is overridden by SwiftUI, which disables the native swipe-back gesture on push screens. Add the following extension once anywhere in your app to re-enable it globally:
+SwiftRoutes uses UIKit's `UINavigationController` under the hood. By default, the interactive pop gesture recognizer's delegate is overridden by SwiftUI, which disables the native swipe-back gesture on push screens. Add the following extension once anywhere in your app to re-enable it globally:
 
 ```swift
 // Extensions/UINavigationController+EXT.swift
@@ -448,7 +450,7 @@ extension UINavigationController: @retroactive UIGestureRecognizerDelegate {
 This extension:
 - Re-enables the native edge-swipe-back gesture on all push screens globally
 - Provides a global `UINavigationController.setSwipeBack(enabled:)` toggle — call it to temporarily disable swipe-back on screens where it conflicts with custom gestures (e.g. horizontal carousels, pagers)
-- Is safe to add once and forget — it does not break any existing SwiftfulRouting APIs
+- Is safe to add once and forget — it does not break any existing SwiftRoutes APIs
 
 **Disable swipe-back on a specific screen (e.g. from a Presenter):**
 
@@ -970,7 +972,7 @@ Built-in logging that can be used for debugging and analytics.
 ```swift
 // Set log level using internal logger:
 
-SwiftfulRoutingLogger.enableLogging(level: .analytic, printParameters: true)
+SwiftRoutesLogger.enableLogging(level: .analytic, printParameters: true)
 ```
 
 Add your own implementation to handle unique events in your app.
@@ -994,7 +996,7 @@ struct MyLogger: RoutingLogger {
     }
 }
 
-SwiftfulRoutingLogger.enableLogging(logger: MyLogger())
+SwiftRoutesLogger.enableLogging(logger: MyLogger())
 ```        
 
 Or use [SwiftfulLogging](https://github.com/SwiftfulThinking/SwiftfulLogging) directly.
@@ -1006,7 +1008,7 @@ let logManager = LogManager(services: [
     MixpanelService()
 ])
 
-SwiftfulRoutingLogger.enableLogging(logger: logManager)
+SwiftRoutesLogger.enableLogging(logger: logManager)
 ```
 
 Additional values to look into the underlying view heirarchy. 
@@ -1058,11 +1060,11 @@ router.activeModules
 <summary> Details (Click to expand) </summary>
 <br>
 
-Even without SwiftfulRouting, SwiftUI developers must decide between using 1 NavigationStack for the entire application or individual NavigationStacks for each tab. 
+Even without SwiftRoutes, SwiftUI developers must decide between using 1 NavigationStack for the entire application or individual NavigationStacks for each tab.
 
 If you use only 1 `NavigationStack`, it will be a parent to the `TabView` and therefore the tabbar will also push off screen after a segue.
 
-1 NavigationStack without SwiftfulRouting:
+1 NavigationStack without SwiftRoutes:
 
 ```swift
 NavigationStack {
@@ -1079,7 +1081,7 @@ NavigationStack {
 }
 ```   
 
-1 NavigationStack with SwiftfulRouting:
+1 NavigationStack with SwiftRoutes:
 
 ```swift
 RouterView { _ in
@@ -1096,7 +1098,7 @@ RouterView { _ in
 }
 ```   
 
-Individual NavigationStacks without SwiftfulRouting:
+Individual NavigationStacks without SwiftRoutes:
  
 ```swift
 TabView {
@@ -1117,7 +1119,7 @@ TabView {
 }
 ```  
 
-Individual NavigationStacks with SwiftfulRouting:
+Individual NavigationStacks with SwiftRoutes:
  
 ```swift
 TabView {
@@ -1267,4 +1269,4 @@ This package includes a `.claude/swiftful-routing-rules.md` with usage guideline
 
 ## License
 
-SwiftfulRouting is available under the MIT license.
+SwiftRoutes is available under the MIT license.

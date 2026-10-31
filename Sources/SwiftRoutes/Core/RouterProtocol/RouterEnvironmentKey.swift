@@ -1,0 +1,19 @@
+//
+//  RouterEnvironmentKey.swift
+//  SwiftfulRouting
+//
+//  Created by Nick Sarno on 4/19/25.
+//
+import SwiftUI
+
+/// The environment key used to provide the current router to descendant views.
+public struct RouterEnvironmentKey: EnvironmentKey {
+    public static let defaultValue: AnyRouter = AnyRouter(id: "mock", rootRouterId: "root_mock", object: MockRouter())
+}
+
+public extension EnvironmentValues {
+    var router: AnyRouter {
+        get { self[RouterEnvironmentKey.self] }
+        set { self[RouterEnvironmentKey.self] = newValue }
+    }
+}
