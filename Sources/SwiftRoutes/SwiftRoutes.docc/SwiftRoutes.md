@@ -54,6 +54,31 @@ ResizableSheetConfig(
 - ``AnyAlert``
 - ``AnyTransitionDestination``
 
+### Alerts and modals
+
+- ``AnyAlert``
+- ``AlertLocation``
+- ``AlertStyle``
+- ``AnyModal``
+
+### Presentation and transitions
+
+- ``SegueOption``
+- ``SegueLocation``
+- ``FullScreenCoverConfig``
+- ``EnvironmentBackgroundOption``
+- ``BackgroundEffect``
+- ``TransitionOption``
+- ``TransitionMemoryBehavior``
+- ``AnyDestinationStack``
+
+### Logging
+
+- ``RoutingLogger``
+- ``SwiftRoutesLogger``
+- ``RoutingLogEvent``
+- ``RoutingLogType``
+
 ### Sheets
 
 - ``ResizableSheetConfig``
